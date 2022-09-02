@@ -1,6 +1,7 @@
-import { Counter } from "./views/Counter";
-import { FetchData } from "./views/FetchData";
-import { Home } from "./views/Home";
+import { Counter } from "./views/Counter"
+import { FetchData } from "./views/FetchData"
+import { Home } from "./views/Home"
+import HelloPage from './views/HelloPage/AppForm'
 
 const AppRoutes = [
   {
@@ -14,7 +15,12 @@ const AppRoutes = [
   {
     path: '/fetch-data',
     element: <FetchData />
+  },
+  {
+    path: '/hello',
+    element: <HelloPage />
   }
+
 ];
 
 export default AppRoutes;

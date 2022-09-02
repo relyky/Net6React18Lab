@@ -26,6 +26,7 @@ export class NavMenu extends Component {
       <header>
         <nav>
           <Link to="/">Home</Link>&nbsp;|&nbsp;
+          <Link to="/hello">Hello</Link>&nbsp;|&nbsp;
           <Link to="/counter">Counter</Link>&nbsp;|&nbsp;
           <Link to="/fetch-data">Fetch data</Link>
         </nav>
