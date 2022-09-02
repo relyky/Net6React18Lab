@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Net6React18Lab.Models;
 
 namespace Net6React18Lab.Controllers
 {
-  [ApiController]
+    [ApiController]
   [Route("[controller]")]
   public class WeatherForecastController : ControllerBase
   {

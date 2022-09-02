@@ -1,7 +1,7 @@
-import { Counter } from "./views/Counter"
 import { FetchData } from "./views/FetchData"
 import { Home } from "./views/Home"
 import HelloPage from './views/HelloPage/AppForm'
+import { Counter } from './views/ReduxCounter/Counter'
 
 const AppRoutes = [
   {
@@ -20,7 +20,6 @@ const AppRoutes = [
     path: '/hello',
     element: <HelloPage />
   }
-
 ];
 
 export default AppRoutes;
