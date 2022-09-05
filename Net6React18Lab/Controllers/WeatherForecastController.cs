@@ -4,7 +4,7 @@ using Net6React18Lab.Models;
 namespace Net6React18Lab.Controllers
 {
     [ApiController]
-  [Route("[controller]")]
+  [Route("api/[controller]/[action]")]
   public class WeatherForecastController : ControllerBase
   {
     private static readonly string[] Summaries = new[]
@@ -19,9 +19,12 @@ namespace Net6React18Lab.Controllers
       _logger = logger;
     }
 
-    [HttpGet]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpPost]
+    public IEnumerable<WeatherForecast> QryDataList()
     {
+      // 模擬長時間計算
+      SpinWait.SpinUntil(() => false, 2000); // 等二秒
+
       return Enumerable.Range(1, 15).Select(index => new WeatherForecast
       {
         Date = DateTime.Now.AddDays(index),
