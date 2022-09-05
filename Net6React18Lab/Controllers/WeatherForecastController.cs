@@ -3,7 +3,7 @@ using Net6React18Lab.Models;
 
 namespace Net6React18Lab.Controllers
 {
-    [ApiController]
+  [ApiController]
   [Route("api/[controller]/[action]")]
   public class WeatherForecastController : ControllerBase
   {
@@ -20,18 +20,23 @@ namespace Net6React18Lab.Controllers
     }
 
     [HttpPost]
-    public IEnumerable<WeatherForecast> QryDataList()
+    public IEnumerable<WeatherForecast> QryDataList(QryDataListArgs args)
     {
       // 模擬長時間計算
       SpinWait.SpinUntil(() => false, 2000); // 等二秒
 
-      return Enumerable.Range(1, 15).Select(index => new WeatherForecast
+      return Enumerable.Range(1, args.rowCount).Select(index => new WeatherForecast
       {
         Date = DateTime.Now.AddDays(index),
         TemperatureC = Random.Shared.Next(-20, 55),
         Summary = Summaries[Random.Shared.Next(Summaries.Length)]
       })
       .ToArray();
+    }
+
+    public record QryDataListArgs
+    {
+      public int rowCount { get; set; }
     }
   }
 }

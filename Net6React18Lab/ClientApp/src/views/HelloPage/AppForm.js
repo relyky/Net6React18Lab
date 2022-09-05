@@ -1,22 +1,37 @@
-﻿import React from 'react'
+import React, { useState } from 'react'
 import PageTitle from 'widgets/PageTitle'
 import { usePostData } from 'hooks/useHttp'
 
 export default function AppForm(props) {
+  const [args, setArgs] = useState({ rowCount: 15 })
+
   return (
     <div>
       <PageTitle>我是抬頭 of Hello Page</PageTitle>
 
-      <p>我是 Hello Page XXXX。</p>
+      <InputNumber name="rowCount" value={args.rowCount} onChange={(name, value) => setArgs({ ...args, [name]: value })} />
 
-      <WeatherForecastTable />
+      <WeatherForecastTable args={args} />
     </div>
   )
 }
 
 //-----------------------------------------------
-const WeatherForecastTable = () => {
-  const [dataList, loading, error, refetch] = usePostData('api/WeatherForecast/QryDataList')
+const InputNumber = (props) => {
+  return (
+    <input type="number" name={props.name} value={props.value}
+      onChange={e => {
+        const { name, value } = e.target
+        const newValue = parseInt(value, 10)
+        props.onChange && props.onChange(name, newValue === NaN ? 0 : newValue);
+      }}
+    />
+  )
+}
+
+//-----------------------------------------------
+const WeatherForecastTable = (props) => {
+  const [dataList, loading, error, refetch] = usePostData('api/WeatherForecast/QryDataList', props.args)
 
   return (
     <div>

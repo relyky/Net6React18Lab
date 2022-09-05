@@ -42,7 +42,7 @@ export function usePostData(url, args = null, option = null) {
       .finally(_ => setLoading(false))
   }
 
-  //# DidMount
+  //# DidMount/DidUpdate
   useEffect(() => {
     if (attrs.initially) refetch();
   }, [url, args]);
